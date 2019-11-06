@@ -1,0 +1,53 @@
+%---------------------------------------------------------------------------------------------------
+% Verzeichnisse allgemein
+%---------------------------------------------------------------------------------------------------
+
+% Paket zum Hinzufügen von Inhaltsverzeichnissen für einzelne Teile, Kapitel, Abschnitte etc.
+\usepackage[tight]{minitoc}
+%	horizontale Linien vor und nach jeder minitoc deaktivieren
+\mtcsetrules{*}{off}
+%	Seitenumbruch deaktivieren vor dem Mini-Inhaltsverzeichnis
+\mtcsetfeature{parttoc}{before}{\empty}
+%	Titel umbenennen, damit keine englische Bezeichnung
+\mtcsettitle{parttoc}{Inhaltsverzeichnis}
+
+
+%	Paket zum Formtieren von Verzeichnissen (ToC, LoF, LoT etc.)
+\usepackage{tocloft}
+
+
+%	Abstand der Punkte ändern, die mit \dotfill ausgegeben werden --> Angleichen der Punkteabstände im Glossar mit denen im Inhaltsverzeichnis
+\makeatletter
+	\renewcommand{\@dotsep}{4}	%	sollte (nach Augenmaß) denen im Inhaltsverzeichnis entsprechen
+	\renewcommand*{\dotfill}{%
+		\leavevmode\leaders
+		\hbox{$\m@th \mkern \@dotsep mu\hbox{.}\mkern \@dotsep mu$}
+		\hfill\kern\z@
+	} 
+\makeatother
+
+
+%---------------------------------------------------------------------------------------------------
+% Todo-Verzeichnis
+%---------------------------------------------------------------------------------------------------
+\input{./include/verzeichnis/todo}
+
+%---------------------------------------------------------------------------------------------------
+% Stichwortverzeichnis
+%---------------------------------------------------------------------------------------------------
+\input{./include/verzeichnis/stichwort}
+
+%---------------------------------------------------------------------------------------------------
+%	Glossar
+%---------------------------------------------------------------------------------------------------
+\input{./include/verzeichnis/glossar}
+
+%---------------------------------------------------------------------------------------------------
+% Abbildungs- und Tabellenverzeichnis
+%---------------------------------------------------------------------------------------------------
+\input{./include/verzeichnis/fig-tab}
+
+%---------------------------------------------------------------------------------------------------
+% Literaturverzeichnis
+%---------------------------------------------------------------------------------------------------
+%\input{./include/verzeichnis/lit}

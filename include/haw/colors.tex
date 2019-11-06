@@ -1,0 +1,28 @@
+%---------------------------------------------------------------------------------------------------
+% offizielle HAW-Farben verwenden
+%---------------------------------------------------------------------------------------------------
+
+
+% Festlegen der Farben gemäß Corporate-Design-Manual der HAW
+% siehe http://www.bui.haw-hamburg.de/fileadmin/redaktion/Intranet/Logos_und_CD/Design_Manual.pdf
+% hier gefunden: http://www.bui.haw-hamburg.de/215.html
+\definecolor{farbeHAWHamburg}{RGB}{10, 31, 99}
+\definecolor{farbeHAWHamburgStudierendenzentrum}{RGB}{156, 188, 218}
+
+
+% Einfärben von Section-Überschriften
+% Formatierung wurde aus der phdthesis.sty übernommen und überschrieben (lediglich Verwendung der Farbe hinzugefügt, restliche Formatierung entspricht phdthesis.sty)
+\titleformat{\section}[hang]{\color{farbeHAWHamburg}\sffamily\bfseries}{\Large\thesection}{12pt}{\Large}[{\color{farbeHAWHamburgStudierendenzentrum}\titlerule[0.5pt]}]
+
+% Einfärben von Subsection-Überschriften
+% (auch ein bisschen Neuformatierung, phdthesis formatiert nur \section, hier erhält auch \subsection den Sans Serif Font)
+\titleformat*{\subsection}{\large\bfseries\sffamily\color{farbeHAWHamburg}}
+
+
+% Einfärben von Chapter-Überschriften
+% Chapter-Formatierung wird von quotchap-Package übernommen, dieses wird von phdthesis.sty eingebunden
+%\renewcommand*\sectfont{\color{farbeHAWHamburg}}
+% Einfärben von Chapter-Numerierungen
+% wird vom quotchap-Package verwendet (bei fehlender Angabe wird Default verwendet, also grau)
+\definecolor{chaptergrey}{RGB}{156, 188, 218}
+

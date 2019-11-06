@@ -1,0 +1,13 @@
+%---------------------------------------------------------------------------------------------------
+% Abbildungs- und Tabellenverzeichnis
+%---------------------------------------------------------------------------------------------------
+
+%	leichte Einrückung der Verzeichnislisten --> diese hiermit vermeiden
+\setlength{\cftfigindent}{0pt}
+\setlength{\cfttabindent}{0pt}
+
+%	Labels in Abbildungs- und Tabellenverzeichnis ("Abb." und "Tab." jeweils davor setzen)
+\renewcommand{\cfttabpresnum}{Tab. }
+\renewcommand{\cftfigpresnum}{Abb. }
+\settowidth{\cfttabnumwidth}{Abb. 10\quad}		%	\quad siehe http://de.wikibooks.org/wiki/LaTeX-W%C3%B6rterbuch:_quad
+\settowidth{\cftfignumwidth}{Abb. 10\quad}

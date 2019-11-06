@@ -1,0 +1,22 @@
+%---------------------------------------------------------------------------------------------------
+% Versicherung über Selbstständigkeit
+%---------------------------------------------------------------------------------------------------
+
+%	Spaltenbreite bis zur Seitenbreite dehnen
+\usepackage{tabularx}
+%	Versicherung
+\newcommand{\asurency}{
+	\vfill
+	%Hiermit versichere ich, dass ich die vorliegende Arbeit im Sinne der Prüfungsordnung nach \S 24(5) ohne fremde Hilfe selbstständig verfasst und nur die angegebenen Hilfsmittel benutzt habe.
+	Hiermit versichere ich, dass ich die vorliegende Bachelor-Thesis mit dem Titel \anfstriche{\thesisTitle} selbstständig und nur mit den angegebenen Hilfsmitteln verfasst habe. Alle Passagen, die ich wörtlich aus der Literatur oder aus anderen Quellen wie z.B. Internetseiten übernommen habe, habe ich deutlich als Zitat mit Angabe der Quelle kenntlich gemacht.
+	\vfill
+	\noindent{}\begin{tabularx}{\linewidth}{X l X}
+	Hamburg, \today & \qquad \qquad \qquad & \\
+	\cline{1-1}
+	\cline{3-3}
+	Ort, Datum & \qquad \qquad \qquad & \thesisAuthor \\
+	\end{tabularx}
+	\vfill
+	\vfill
+	\vfill
+}

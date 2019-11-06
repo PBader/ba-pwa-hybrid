@@ -1,0 +1,106 @@
+%---------------------------------------------------------------------------------------------------
+% Diverse Pakete einbinden
+%---------------------------------------------------------------------------------------------------
+
+%	Titelbild
+%\usepackage[cc]{./include/titlepic}
+
+
+%	American Mathematical Society (Pakete für mathematischen Formelsatz --> Klammersetzungen, Rechenopreatoren, Konstanten, Fonts etc.)
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+
+
+%	Unicode UTF8
+\usepackage{ucs}
+\usepackage[utf8x]{inputenc}
+%	deutsches Sprachpaket
+\usepackage{ngerman}
+
+
+%	optischer Randausgleich
+\usepackage[activate]{pdfcprot}
+
+
+%	Farben
+\usepackage{color}
+%	Bilder
+\usepackage{graphicx}
+%  FloatBarrier
+\usepackage{placeins}
+
+
+%	Farbige Tabellen (Zeilen, Spalten und Zellen)
+\usepackage{colortbl}
+\usepackage[table]{xcolor}
+
+
+%	Bild-, Tabellen und sonstige Unterschriften mit vom Standard abweichendem vertikalen Abstand zum Element darüber und anderer Schriftgröße
+\usepackage[skip=8pt,font=small]{caption}
+
+
+%	Einbinden externer PDF-Dateien
+\usepackage[final]{pdfpages}
+%	Verwendung (Achtung, ohne .pdf-Endung!)
+%	\includepdf{verzeichnis/pdf-datei}
+
+%	mehr-spaltige Layouts (\twocolumn und \onecolumn klappen zwar, erzeugen aber auch immer ein Pagebreak, multicol macht das nicht)
+\usepackage{multicol}
+
+%	absolute Positionierung von Elementen auf der Seite
+\usepackage[absolute,overlay]{textpos}
+%	Verwendung
+%	\begin{textblock}{⟨hsize⟩}[⟨ho⟩,⟨vo⟩](⟨hpos⟩,⟨vpos⟩) text... \end{textblock}
+
+
+%	Symbole, Sonderzeichen etc.
+%	siehe auch http://carroll.aset.psu.edu/pub/CTAN/info/symbols/comprehensive/symbols-a4.pdf
+\usepackage{pifont}
+%	Verwendung: \ding{<NUM>}
+%	wobei <NUM> der numerische Index für das jeweilige Symbol ist
+
+
+%---------------------------------------------------------------------------------------------------
+% einige eigene Befehle
+%---------------------------------------------------------------------------------------------------
+
+%	Tüddelchen
+\newcommand{\anf}[1]{\glqq{}#1\grqq}
+\newcommand{\anfstriche}[1]{\anf{#1}}	%	Alias
+%	alternativ einfach "`das hier"' verwenden
+%	(ein Command hat lediglich den Vorteil, dass man die Anführungsstriche bei Bedarf leichter austauschen kann, z.B. für andere Sprachen --> dürfte jedoch eher selten vorkommen...)
+
+%	Ausgabe von Steuereingaben des Benutzers, z.B. für Manuals
+%	Taste
+\newcommand{\key}[1]{\huge\keystroke{#1}\normalsize}
+%	Maus
+\newcommand{\mouse}[1]{\huge\ComputerMouse\normalsize{} #1}
+
+%	Verantwortlichkeiten als Randbemerkung
+%\newcommand{\verantwortung}[1]{\marginpar{\tiny{Verantwortlich: #1}}}
+
+%	Ausgabe von LaTeX-Commands im Dokument
+\newcommand{\commandNoParam}[1]{\textup{\textmd{\texttt{\textbackslash{}#1\{\}}}}}
+\newcommand{\commandOneParam}[2]{\textup{\textmd{\texttt{\textbackslash{}#1\{#2\}}}}}
+\newcommand{\commandTwoParams}[3]{\textup{\textmd{\texttt{\textbackslash{}#1\{#2\}\{#3\}}}}}
+\newcommand{\commandThreeParams}[4]{\textup{\textmd{\texttt{\textbackslash{}#1\{#2\}\{#3\}\{#4\}}}}}
+\newcommand{\commandFourParams}[5]{\textup{\textmd{\texttt{\textbackslash{}#1\{#2\}\{#3\}\{#4\}\{#5\}}}}}
+\newcommand{\commandFiveParams}[6]{\textup{\textmd{\texttt{\textbackslash{}#1\{#2\}\{#3\}\{#4\}\{#5\}\{#6\}}}}}
+
+%	http://tex.stackexchange.com/questions/2441/how-to-add-a-forced-line-break-inside-a-table-cell#19678
+%	Achtung: Texte werden horizontal zentriert, nur vertikale kann angegeben werden
+%\newcommand{\td}[2][c]{%
+%	\begin{tabular}[#1]{@{}c@{}}#2\end{tabular}
+%}
+%	-->	erstmal auskommentiert, weil im Moment doch noch keine Verwendung dafür besteht, vorsorglich aber drin gelassen...
+
+
+%	Häkchen ("Ja") und Kreuzchen ("Nein") für Feature-Matrizen
+\definecolor{farbeJa}{rgb}{0.1, 0.45, 0.3}
+\definecolor{farbeNein}{rgb}{0.5, 0.1, 0.1}
+\definecolor{farbeUnbekannt}{rgb}{0.8, 0.6, 0.1}
+\newcommand{\ja}{\color{farbeJa}{\ding{52}}}
+\newcommand{\nein}{\color{farbeNein}{\ding{56}}}
+\newcommand{\unb}{\color{farbeUnbekannt}{\ding{108}}}
+

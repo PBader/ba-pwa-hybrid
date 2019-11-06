@@ -1,0 +1,104 @@
+\input{./include/init.tex}
+
+
+%	grundlegende Inhalte der Abschlussarbeit definieren
+\renewcommand{\thesisTitle}{TBD}
+\renewcommand{\thesisAuthor}{Patric Bader}
+\renewcommand{\thesisAuthorMatrikel}{2137191}
+\renewcommand{\thesisFieldOfStudy}{Media Systems}
+\renewcommand{\thesisFaculty}{Design, Medien und Information}
+\renewcommand{\thesisDepartment}{Medientechnik}
+\renewcommand{\thesisFirstExaminer}{Prof. Dr. Andreas Plaß}		%	1. Gutachter
+\renewcommand{\thesisSecondExaminer}{TBD}	%	2. Gutachter
+
+
+%	Und los geht's. ... May the Schwartz be with you.
+\begin{document}
+
+	%	Deckblatt der Thesis im HAW-Layout ausgeben
+	\createCover
+	%	Deckblatt soll "Seite 0" sein und nicht "Seite 1" (Damit das ToC bei 1 beginnt und nicht bei 2)
+	\addtocounter{page}{-1}
+
+	%	Todo-Verzeichnis ausgeben
+	\tableoftodos
+
+%	%	Inhaltsverzeichnis initialisieren
+%	%	Gliederungstiefe für ToC festlegen (0=chapter, 1=section, ...)
+%	%	hier nur Kapitel ohne Sektionen, um einen gerafften Schnellüberblick zu erhalten --> genaue ToC jeweils in den Parts mit minitoc
+%	\setcounter{tocdepth}{0}
+%	%	minitoc für Parts initialisieren
+%	%	der optionale Parameter "e" sorgt dafür , dass "Table of Contents" nicht über der minitoc ausgegeben wird
+%	%	--> siehe auch minitoc-Doku: "[l] for left (default), [c] for center, [r] for right, or [e] (or [n]) for empty (no title)"
+%	\doparttoc[e]
+%	%	keinen eigenen Style für minitoc
+%	\mtcsetfeature{parttoc}{pagestyle}{\empty}
+%	%	Gliederungstiefe für minitoc festlegen (0=chapter, 1=section, ...) --> analog ToC
+%	\setcounter{parttocdepth}{2}
+	%	Inhaltsverzeichnis ausgeben
+	\tableofcontents
+
+	%	Inhalte von extern laden und ausgeben
+	%\input{./inhalt/toc.tex}
+%	\input{./inhalt/theoretischer-teil.tex}
+%	\input{./inhalt/praktischer-teil-1.tex}
+%	\input{./inhalt/praktischer-teil-2.tex}
+%	\input{./inhalt/schlussbetrachtung.tex}
+%	\input{./inhalt/test.tex}
+%	\input{./inhalt/anhang.tex}
+
+\todo{kein Content hier drin schreiben, nur includen!}
+
+\chapter{Hilfe}
+
+\begin{enumerate}
+	\item "`Anführungszeichen"'
+	\item \textbf{bold} $\rightarrow$ \key{cmd} + \key{b}
+	\item \textit{italic} $\rightarrow$ \key{cmd} + \key{i}
+	\item Bilder immer in figure Umgebung, darin dann includegraphics Command
+\end{enumerate}
+
+\chapter{Testi}
+	\todo{lösch mich! ich bin ein dummy-kapitel…}
+	
+	$\sqrt[13]{234}$
+\chapter{Testi}
+	\todo{mach mich fertig}
+
+\chapter{Testi}
+	\todo{mach mich fertig}
+
+\chapter{Testi}
+	\todo{mach mich fertig}
+
+\chapter{Testi}
+
+	\section{Test}
+		\todo{mach mich fertig}
+
+	\section{Test}
+		\todo{mach mich fertig}
+
+		\subsection{Testit}
+
+			\paragraph{test}
+
+				\subparagraph{blubb}
+
+				\subparagraph{blubb}
+
+	\section{Test}
+		\todo{mach mich fertig}
+
+		\subsection{Testit}
+
+			\paragraph{test}
+
+				\subparagraph{blubb}
+
+				\subparagraph{blubb}
+
+	\section{Test}
+		\todo{mach mich fertig}
+
+\end{document}

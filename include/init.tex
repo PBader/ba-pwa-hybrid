@@ -1,0 +1,40 @@
+%---------------------------------------------------------------------------------------------------
+% Dokument konfigurieren
+%---------------------------------------------------------------------------------------------------
+\documentclass[10pt,a4paper]{report}
+
+%	Layout-Template
+\usepackage{./include/phdthesis}
+
+% Ränder vertauschen, so dass sich beidseitiger Ausdruck zum Binden eignet
+%\newlength{\bakLength}
+%\setlength{\bakLength}{\oddsidemargin}
+%\setlength{\oddsidemargin}{\evensidemargin}
+%\setlength{\evensidemargin}{\bakLength}
+
+% Legt den Zeilenabstand zwischen den Zeilen fest
+%\renewcommand{\baselinestretch}{1.2}
+
+%---------------------------------------------------------------------------------------------------
+% Pakete und Diverses (einfache Includes, eigene Befehle, Definitionen zum Dokument etc.) --> alles , was Einzeiler sind
+%---------------------------------------------------------------------------------------------------
+\input{./include/common-stuff}
+
+%---------------------------------------------------------------------------------------------------
+% Pakete, die noch einige Einstellungen benötigen (Includes sowie zugehörige Definitionen oder gruppierte Includes etc.) --> alles, was kein Einzeiler ist
+%---------------------------------------------------------------------------------------------------
+\input{./include/lib}
+
+%---------------------------------------------------------------------------------------------------
+% Verzeichnisse für Bilder, Tabellen, Listings etc. --> alles, was mit Verzeichnissen für den Inhalt und den Anhang zu tun hat
+%---------------------------------------------------------------------------------------------------
+\input{./include/verzeichnis}
+
+%---------------------------------------------------------------------------------------------------
+% HAW Deckblatt, Erklärung über Selbstständigkeit --> alles, was die Bachelor-Arbeit bei der HAW betrifft
+%---------------------------------------------------------------------------------------------------
+\input{./include/haw}
+
+%	Standard-LaTeX-Commands für Titel und Autor mit den HAW-Abschlussarbeit-Commands befüllen
+\author{\thesisAuthor{} (\thesisAuthorMatrikel)}
+\title{\thesisTitle}

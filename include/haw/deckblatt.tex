@@ -1,0 +1,112 @@
+%---------------------------------------------------------------------------------------------------
+% HAW Deckblatt
+%---------------------------------------------------------------------------------------------------
+
+\newcommand{\thesisTitle}{
+	\commandTwoParams
+		{renewcommand}
+		{\textbackslash{}thesisTitle}
+		{Aussagekräftiger Titel deiner Thesis}
+}
+\newcommand{\thesisAuthor}{
+	\commandTwoParams
+		{renewcommand}
+		{\textbackslash{}thesisAuthor}
+		{Dein~Name}
+}
+\newcommand{\thesisAuthorMatrikel}{
+	\commandTwoParams
+		{renewcommand}
+		{\textbackslash{}thesisAuthorMatrikel}
+		{Deine~Matrikelnummer}
+}
+\newcommand{\thesisFieldOfStudy}{
+	\commandTwoParams
+		{renewcommand}
+		{\textbackslash{}thesisFieldOfStudy}
+		{Dein~Studiengang}
+}
+\newcommand{\thesisFaculty}{
+	\commandTwoParams
+		{renewcommand}
+		{\textbackslash{}thesisFaculty}
+		{Deine~Fakultät}
+}
+\newcommand{\thesisDepartment}{
+	\commandTwoParams
+		{renewcommand}
+		{\textbackslash{}thesisDepartment}
+		{Dein~Department}
+}
+\newcommand{\thesisFirstExaminer}{
+	\commandTwoParams
+		{renewcommand}
+		{\textbackslash{}thesisFirstExaminer}
+		{Dein~Erstprüfer}
+}
+\newcommand{\thesisSecondExaminer}{
+	\commandTwoParams
+		{renewcommand}
+		{\textbackslash{}thesisSecondExaminer}
+		{Dein~Zweitprüfer}
+}
+
+% Font-Farbe für den Footer des Deckblattes
+\definecolor{farbeDeckblattFooter}{rgb}{1,1,1}	%	weiß, da dunkler Hintergrund
+
+
+% Erstellung des Deckblatts
+% Anwendung:
+% \createCover
+\newcommand{\createCover}[0]{
+	\thispagestyle{empty}
+	\begin{titlepage}
+	\sffamily
+
+	\setlength{\TPHorizModule}{1mm}
+	\setlength{\TPVertModule}{1mm}
+	\textblockorigin{0mm}{0mm} % start everything near the top-left corner
+
+	% Art der Arbeit
+	\begin{textblock}{111}(83,115)
+		\begin{minipage}[c][0,78cm][c]{11,09cm}
+			\fontsize{22pt}{20pt}\selectfont
+			\color{farbeHAWHamburg}
+			\begin{center}
+				Bachelor-Thesis
+			\end{center}
+		\end{minipage}
+	\end{textblock}
+
+	% Name & Titel
+	\begin{textblock}{111}(83,131)
+		\begin{minipage}[c][4,81cm][t]{11,09cm}
+			\color{farbeHAWHamburg}
+			\begin{center}
+				\vspace{.6cm}
+				\fontsize{14pt}{12pt}\selectfont
+				\thesisAuthor\\
+				\small{Matrikelnummer \thesisAuthorMatrikel}\\
+				\medskip
+				\vspace{1cm}
+				\fontsize{14pt}{16pt}\selectfont
+				\emph{\thesisTitle}
+			\end{center}
+		\end{minipage}
+	\end{textblock}
+	% Infos zur Arbeit und zum Fachbereich
+	\begin{textblock}{186}(18.6,264)
+		\begin{minipage}[t][5,72cm][l]{17,57cm}
+			\color{farbeDeckblattFooter}
+			\fontsize{12pt}{13pt}\selectfont
+			{Studiengang \thesisFieldOfStudy \hfill \today}\\
+			{Fakultät \thesisFaculty \hfill 1. Gutachter \thesisFirstExaminer}\\
+			{Department \thesisDepartment \hfill 2. Gutachter \thesisSecondExaminer}\\
+		\end{minipage}
+	\end{textblock}
+	\newpage
+	\end{titlepage}
+	% Wichtig! Entsprechendes Auskommentieren!
+	\includepdf{pdf/titel}					 				% zum Ausdruck auf blanko Papier
+	%\includepdf{pdf/titel_leer}					 	% zum Ausdruck auf die Pappe
+}

@@ -1,0 +1,48 @@
+%---------------------------------------------------------------------------------------------------
+% Todo-Verzeichnis
+%---------------------------------------------------------------------------------------------------
+
+%	Float-Paket, um eigene Umgebungen zu definieren (für Todos benötigt)
+\usepackage{float}
+%	Float-Umgebung für Todos definieren
+\newfloat{ToDo}{hbtp}{todoslist}		%	Verwendung:	\newfloat{<klasse>}{<position>}{<erw>}[<ebene>]
+%	neuer Zähler für Nummerierung der Todos
+\newcounter{todonr}
+%	Todo-Markierung bauen
+\newcommand{\todo}[1]{
+	\addtocounter{todonr}{1}
+	\FloatBarrier
+	\begin{ToDo}
+		%
+		\vspace{-8pt}
+		%\boxed{	%	Rahmen ziehen, um Layout zu prüfen und zu korrigieren
+			%	zweispaltig mit minipage, damit Todo-Icon und Todo-Text vertikal mittig gegeneinander ausgerichtet werden
+			\begin{minipage}{0.09\textwidth}
+				\includegraphics[width=.8cm]{./img/todo.jpg}
+			\end{minipage}
+			\begin{minipage}{0.9\textwidth}
+				\textbf{Todo\,\arabic{todonr}:} #1
+			\end{minipage}
+			%	Eintrag in das Todo-Verzeichnis hinzufügen, welches mit \tableoftodos erzeugt wird
+			\addcontentsline{todoslist}{ToDo}{#1}
+		%}
+	\end{ToDo}
+	\vspace{-6pt}
+	\FloatBarrier
+}
+%	TOC-Befehl für Todo-Verzeichnis
+\newcommand{\tableoftodos}{
+	\addtocounter{page}{-2}
+	\listof{ToDo}{TODOs}
+	\newpage
+}
+% Layout für Todo-Verzeichnis anpassen
+\makeatletter
+\renewcommand*{\listof}[2]{%
+  \@ifundefined{ext@#1}{\float@error{#1}}{%
+    \expandafter\let\csname l@#1\endcsname \l@figure  % <- use layout of figure
+    \float@listhead{#2}%	Headline
+    \begingroup%
+      \@starttoc{\@nameuse{ext@#1}}%
+    \endgroup}}%
+\makeatother

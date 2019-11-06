@@ -1,0 +1,45 @@
+%---------------------------------------------------------------------------------------------------
+% Stichwortverzeichnis
+%---------------------------------------------------------------------------------------------------
+
+\usepackage{makeidx}
+\renewcommand{\indexname}{Stichwortverzeichnis}
+
+%	Erstellung des Stichwortverzeichnisses
+\makeindex
+
+%	fügt dem Index ein Wort hinzu
+\newcommand{\ind}[1]{#1\index{#1}%
+%	%	Ausgabe des Begriffs am Seitenrand
+%	\marginpar{%
+%		%\ifthenelse{\isodd{\value{page}}}{}{\hspace{\evensidemargin}}%		macht vertikalen Abstand, ungefähr eine Leerzeile --> damit verschiebt sich der Text am Seitenrand um eine Zeile tiefer als das eigentliche Wort (vermutlich wegen der links-/rechts-wechselnden Seiten bei geraden und ungeraden Seitenzahlen)
+%		\parbox[t]{1.5\oddsidemargin}{%
+%			\hspace{0pt}\em%
+%			%	wenn Seitenzahl ungerade, dann linksbündig, ansonsten rechtsbündig
+%			%\ifthenelse{\isodd{\value{page}}}{\raggedright{#2}}{\raggedleft{#2}}%
+%			\raggedright{#1}%
+%		}%
+%	}%
+}
+%	Formatierungen, um zu vermeiden, dass der Index auf einer neuen Seite ausgegeben wird
+\makeatletter
+	\renewenvironment{theindex}{
+%		%\section{\indexname}\label{sec-index}%		Überschrift vermeiden, eigene/s Section/Kapitel soll verwendet werden können
+%		\@mkboth{\MakeUppercase\indexname}%
+%		{\MakeUppercase\indexname}%
+%		\thispagestyle{plain}\parindent\z@
+%		\parskip\z@ \@plus .3\p@\relax
+%		\columnseprule \z@
+%		\columnsep 35\p@
+%		\let\item\@idxitem
+
+%		\twocolumn%[\section*{\indexname}]%		%	2-spaltiges Layout setzen	(besser multicol-package nutzen, deshalb auskommentiert)
+		\@mkboth{\MakeUppercase\indexname}%		
+		{\MakeUppercase\indexname}%
+		\thispagestyle{plain}\parindent\z@
+		\parskip\z@ \@plus .3\p@\relax
+		\columnseprule \z@
+		\columnsep 35\p@
+		\let\item\@idxitem
+	}{}%{\onecolumn}		%	1-spaltiges Layout wieder herstellen	(stattdessen einfach nur {}, weil \twocolumn nicht verwendet wird)
+\makeatother

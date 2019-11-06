@@ -1,0 +1,65 @@
+%	Erläuterungen der Glossareinträge
+
+\newcommand{\glossareintragComposite}{
+	Das Composite-Pattern ist ein Strukturmuster nach \citealp{entwurfsmuster-buch} zur Repräsentation von Teil-Ganzes-Hierarchien. Es erlaubt die einheitliche Behandlung "`einzelner Objekte sowie Kompositionen von Objekten"'.
+}
+\newcommand{\glossareintragDecorator}{
+	Das Decorator-Pattern ist ein Strukturmuster nach \citealp{entwurfsmuster-buch}, um \textit{"`ein Objekt dynamisch um Zuständigkeiten [zu erweitern. Es ist] eine flexible Alternative zur Unterklassenbildung, um die Funktionalität einer Klasse zu erweitern."'}\\
+	Die eigentliche Klasse wird dabei von einem Decorator ummantelt, welcher Methodenaufrufe an die Klasse delegiert, den Rückgabewert allerdings um neue Teile erweitert.
+}
+\newcommand{\glossareintragEclipse}{
+	Bei Eclipse handelt es sich um eine sogenannte "`Integrated Development Environment"' (IDE), also um eine integrierte Entwicklungsumgebung. IDEs sind komplexe Programmiereditoren mit intelligenten Features wie Code-Highlighting, Auto-Completion, Klassenstrukturanalyse, Syntaxprüfung, Refactoring-Tools und vielem mehr.
+}
+\newcommand{\glossareintragEntwurfsmuster}{
+	Ein Entwurfsmuster, in englischer (teilweise aber auch in deutscher) Literatur als "`Pattern"' oder "`Design Pattern"' bezeichnet, ist ein Rezept für die Lösung von immer wiederkehrenden Problemen in der Architektur von Softwaresystemen. Es sind bewährte Bauanleitungen und Musterlösungen für Klassenstrukturen in einem objektorientierten Programmierumfeld.
+}
+\newcommand{\glossareintragGit}{
+	Git ist ein weit verbreitetes, von Linus Torvalds entwickeltes Version Control System (VCS), ein Programm für die Versionsverwaltung von Dateien. Jede Datei kann nach einer Änderung versioniert werden. Dadurch erhält der Nutzer eines VCS wie Git eine Historie aller seiner Änderungen, mit Hilfe derer zu jedem Zeitpunkt ein beliebiger vorheriger Stand einer oder mehrerer Dateien hergestellt werden kann.\\
+	Weitere VC Systeme mit hohem Bekanntheitsgrad sind CVS, SVN und Mercurial.
+}
+\newcommand{\glossareintragHTML}{
+	HTML ist eine vom W3C standardisierte Auszeichnungssprache zur Beschreibung von Webseiten. Sogenannte Browser-Programme interpretieren HTML-Dokumente und zeigen die Webseite an.\\
+	Die Syntax der HTML ist XML-ähnlich aber nicht XML-konform, da sie nicht alle Grundregeln der XML erfüllt, also nicht "`well-formed"' ist. Einen XML-konformen Entwurf der HTML, die XHTML, gibt es bereits, auch diese wurde vom W3C standardisiert.
+}
+\newcommand{\glossareintragKapselung}{
+	In der Objektorientierung werden Instanzvariablen vor dem Zugriff durch Instanzen anderer Klassen geschützt. Die Instanzvariablen einer Klasse werden in der Regel als \texttt{private}, mindestens jedoch als \texttt{protected} deklariert ("`gekapselt"'). Dadurch kann von außen nicht darauf zugegriffen oder gar die Werte geändert werden, außer von der Klasse selbst bzw. von einer abgeleiteten Klasse.
+}
+\newcommand{\glossareintragMehrfachvererbung}{
+	Unter Mehrfachvererbung versteht man in der Objektorientierung das gleichzeitige Erweitern von zwei oder mehreren Klassen mit nur einer Klasse. Die neue Klasse "`erbt"' sämtliche Attribute und Methoden der Klassen.\\
+	Problematisch beim Aufruf einer Methode, die in mindestens zwei der erweiterten Elternklassen enthalten ist und jeweils die gleiche Parametersignatur aufweist, ist die eindeutige Zuordbarkeit. Zusätzliche Mechanismen und Syntaxelemente sind in die Programmiersprache einzuführen.\\
+	In modernen objektorientierten Programmiersprachen gilt die Mehrfachvererbung aus diesem Grunde gewissermaßen als verpönt und führt deshalb im Regelfall bei kompilierbaren Sprachen zu Übersetzungsfehlern (Compile Error) oder bei interpretierbaren Sprachen zu Laufzeitfehlern (Runtime Error).
+}
+\newcommand{\glossareintragMVC}{
+	Das MVC-Paradigma, häufig fälschlicherweise als Pattern bezeichnet, ist ein konzeptioneller Grundgedanke in der Softwareentwicklung, bei dem es um die Trennung von Programmkomponenten mit unterschiedlichen Funktionszwecken geht. Zu trennen sind dabei die Komponenten der Datenhaltung (Model), der Datenpräsentation (View) und der Datensteuerung (Controller).\\
+	In der Komponente der Datenhaltung werden beispielsweise Datenbankzugriffe getätigt sowie Lese- und Schreibzugriffe auf Dateien gemacht, weshalb die Summe aller Klassen der Model-Komponente auch Persistenzschicht genannt wird. Die View-Komponente fasst alle Klassen und Dateien zusammen, die verantwortlich für die Präsentation der Daten sind, das können z.B. auch Layouttemplates und Formulare sein. Ein Controller steuert den Datenfluss zwischen Model und View, er kann auch für Geschäftslogiken verwendet werden, z.B. für das Validieren von Formulardaten und Erzeugen von Fehlermeldungen oder für das Durchführen von Berechnungen.
+}
+\newcommand{\glossareintragObjektorientierung}{
+	Objektorientierung ist in der Softwareentwicklung eine Herangehensweise, um komplexe Systeme zu strukturieren und ihrer Quellcodes Herr zu werden. Codefragmente für bestimmte Zwecke werden dabei in Klassen gruppiert. Grundelemente der Objektorientierung sind Datenkapselung, Vererbung und Polymorphie \citep[siehe auch][]{objektorientierung-buch}.
+}
+\newcommand{\glossareintragParsing}{
+	Als Parsen bezeichnet man einen Vorgang, bei dem ein Datenstrom (z.B. die Zeichenkette einer Textdatei) eingelesen und analysiert wird. Dabei werden die Daten in ein neues Format verarbeitet. Beim Parsen von XML-Strukturen z.B. kann das Ergebnis der Analyse ein Baum aus Objekten sein, von denen jedes ein XML-Element des geparsten XML-Baumes repräsentiert.
+}
+\newcommand{\glossareintragPEAR}{
+	PEAR ist ein zentralisiertes Verteilungssystem für wiederverwendbare, in PHP programmierte Open-Source Komponenten.
+}
+\newcommand{\glossareintragPECL}{
+	PECL ist eine Quelle für PHP-Erweiterungen, um den Funktionsumfang der Programmiersprache zu vergrößern.
+}
+\newcommand{\glossareintragRequest}{
+	Ein Request ist die Anfrage eines Clients an einen Server. Beispiele solcher Anfragen sind Remote Procedure Calls (Aufruf einer Methode über eine Schnittstelle) oder einfach nur der Aufruf einer Webseite.
+}
+\newcommand{\glossareintragSingleton}{
+	Das Singelton-Pattern ist ein Erzeugungsmuster für das Vorhandensein von genau einer einzigen Instanz einer Klasse (das Singleton) im gesamten System. Es stellt sicher, dass keine zweite Instanz existieren kann, der Konstruktor der Singleton-Klasse ist gekapselt und entsprechend nicht von außen zugreifbar. Ein globaler Zugriff auf das Singleton ist möglich \citep[siehe][]{entwurfsmuster-buch}.
+}
+\newcommand{\glossareintragUnitTesting}{
+	Jede Software kann in Teile zerlegt werden, in der Regel sind das Funktionen und Methoden. Beim Unit-Testing geht es darum, diese Funktionen und Methoden automatisiert und weitestgehend kontextunabhängig (also möglichst alleinstehend ohne Einfluss von Umgebungsvariablen, die beim Ausführen der kompletten Software entstehen könnten) auf Fehler zu prüfen.\\
+	Unter Softwareentwicklern, die Unit-Tests durchführen, wird die Ansicht vertreten, dass ein gesamtes Softwaresystem nur dann fehlerfrei funktionieren kann, wenn seine Einzelteile fehlerfrei funktionieren. Deshalb ist es sinnvoll, Funktionen und Methoden unter kontrollierten Bedingungen (die Unit-Testumgebung) bei unterschiedlicher Parametrisierung auf erwartete Rückgabewerte oder Seiteneffekte der Funktion/Methode zu prüfen.\\
+	Am besten geeignet für Unit-Testing sind Funktionen und Methoden, die nur kleine Methodenkörper besitzen und entsprechend nur möglichst kleine Aufgaben erfüllen. Beispielsweise ließe sich die Korrektheit einer Funktion zur Addition zweier Zahlen einfacher durch Unit-Tests prüfen als eine Funktion, welche unter Berücksichtigung der Mondumlaufbahn um die Erde den aktuellen Vollmondstatus errechnet.
+}
+\newcommand{\glossareintragWdreiC}{
+	Das W3C ist ein international agierendes Gremium, welches Empfehlungen zu Standards für Internettechnologien ausspricht. Diese Empfehlungen sind keine de-facto Standards, werden von der Industrie aber weitestgehend anerkannt. Bekannte Empfehlungen sind HTML, CSS und XML, welche von den Browsern fast aller Hersteller gemäß der Spezifikationen in den jeweiligen Empfehlungen genutzt werden.
+}
+\newcommand{\glossareintragZF}{
+	Beim Zend Framework handelt es sich um ein in der Programmiersprache PHP geschriebenes Grundgerüst für Webapplikationen. Das ZF bietet eine Implementierung des MVC-Paradigmas. So wird einem Entwickler die Möglichkeit geboten, seine Webbapplikation durch die Verwendung von Model-, View- und Controller-Klassen zu strukturieren.\\
+	Softwareentwickler können außerdem auf einen großen Funktionsumfang zurückgreifen, den sie --sofern sie ihn brauchen-- nicht mehr selbst programmieren müssen, sondern direkt nutzen können.\\
+}

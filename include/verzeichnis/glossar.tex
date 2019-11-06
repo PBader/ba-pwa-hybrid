@@ -1,0 +1,115 @@
+%---------------------------------------------------------------------------------------------------
+%	Glossar
+%---------------------------------------------------------------------------------------------------
+\usepackage[refpage,german]{nomencl}
+
+%	zentral gesammelte Glossar-Erläuterungen einbinden
+\input{./data/glossar.tex}
+
+%\renewcommand{\pagedeclaration}[1]{\unskip\dotfill\hyperpage{#1}}		%	Seitenzahlen im Glossar verlinken, nicht nur einfach ausgeben
+\makenomenclature
+\makeatletter
+	\def\@@@nomenclature[#1]#2#3{%
+		\def\@tempa{#2}\def\@tempb{#3}%
+		\protected@write\@nomenclaturefile{}{
+			\string\nomenclatureentry{
+				#1\nom@verb\@tempa @[{\nom@verb\@tempa}]|nompageref{
+					\begingroup\nom@verb\@tempb\protect\nomeqref
+					{\theequation}
+				}%
+			}%
+			{\thepage}%
+		}%
+		\endgroup
+		\@esphack
+	}%
+	\def\nompageref#1#2{
+		\if@printpageref\pagedeclaration{#2}\else\null\fi	%	#2 ist die Seitenzahl
+		\linebreak#1\nomentryend\endgroup
+	}
+	\def\pagedeclaration#1{\dotfill\nobreakspace#1}
+	%\def\nomentryend{.}									%	Punkt am Ende des Glossar-Eintrags
+	\def\nomlabel#1{\textbf{#1}\hfil}						%	#1 ist das Wort im Glossar in Fettschrift
+\makeatother
+
+%	keine eigene Seite für das Glossar, wie es das nomencl-Paket als Standard ausgibt
+\makeatletter
+	\def\thenomenclature{%
+	%	Überschrift vermeiden, eigene/s Section/Kapitel soll verwendet werden können
+	%	\@ifundefined{chapter}{%
+	%		\section*{\nomname}
+	%		\if@intoc\addcontentsline{toc}{section}{\nomname}\fi%
+	%	}{%
+	%		\chapter*{\nomname}
+	%		\if@intoc\addcontentsline{toc}{chapter}{\nomname}\fi%
+	%	}%
+		\nompreamble
+		\list{}{%
+			%\labelwidth\nom@tempdim
+			%\leftmargin=14mm
+			%\itemindent=\dimexpr\itemsep+\labelwidth\relax
+			%\itemsep\nomitemsep
+			\let\makelabel\nomlabel
+		}
+	}
+\makeatother
+
+%	Glossar-Befehl mit zwei Schreibweisen des Begriffs, eine für die Ausgabe im Fließtext, die andere für den Eintrag im Glossar; der Begriff wird sogleich an den Seitenrand geschrieben
+\newcommand{\glossarAlternative}[3]{%
+	\emph{#1}%				Begriff ausgeben
+	\index{#2}%				in den Index
+	\nomenclature{\hypertarget{\detokenize{#2}}{#2}}{#3}%	Begriff und Erklärung ins Glossar --> \detokenize{#2} entfernt Umlaute und Sonderzeichen im Verlinkungsziel
+	%	Ausgabe des Begriffs am Seitenrand
+	\marginpar{%
+		%\ifthenelse{\isodd{\value{page}}}{}{\hspace{\evensidemargin}}%		macht vertikalen Abstand, ungefähr eine Leerzeile --> damit verschiebt sich der Text am Seitenrand um eine Zeile tiefer als das eigentliche Wort (vermutlich wegen der links-/rechts-wechselnden Seiten bei geraden und ungeraden Seitenzahlen)
+		\parbox[t]{1.5\oddsidemargin}{%
+			\hspace{0pt}\em%
+			%	wenn Seitenzahl ungerade, dann linksbündig, ansonsten rechtsbündig
+			%\ifthenelse{\isodd{\value{page}}}{\raggedright{#2}}{\raggedleft{#2}}%
+			\raggedright{\hyperlink{\detokenize{#2}}{#2}}%	mit Verlinkung auf den Eintrag im Glossar (\detokenize des Linkziels, da auch bei den \nomenclature-Commands gemacht)
+		}%
+	}%
+}
+%	\glossarAlternative{ein Wort im Text}{das Wort}{Erklärung des Wortes im Glossar}
+%	\glossarAlternative{verlinkt}{Verlinkung}{Erläuterung des Begriffs "Verlinkung"}
+
+%	Glossar-Befehl mit der Möglichkeit, Abkürzungen zu verwenden; der Begriff wird sogleich an den Seitenrand geschrieben
+\newcommand{\glossar}[3]{%
+	%	Ausgabe des Begriffs/der Abkürzung im Fließtext
+	\emph{%
+		%	wenn erster Parameter leer
+		\ifthenelse{\equal{#1}{}}%
+			%	dann nur den zweiten Parameter verwenden
+			{%
+				\ind{#2}%					in den Index (mit sofortiger Ausgabe)
+				\nomenclature{\hypertarget{\detokenize{#2}}{#2}}{#3}%		Begriff und Erklärung ins Glossar --> \detokenize{#2} entfernt Umlaute und Sonderzeichen im Verlinkungsziel
+			}%
+			%	wenn beide Parameter gleich
+			{\ifthenelse{\equal{#1}{#2}}
+				%	dann nur den zweiten Parameter verwenden (der erste ist dann im Grunde egal, könnte auch einfach leer gelassen werden)
+				{%
+					\ind{#2}%				in den Index (mit sofortiger Ausgabe)
+					\nomenclature{\hypertarget{\detokenize{#2}}{#2}}{#3}%	Begriff und Erklärung ins Glossar --> \detokenize{#2} entfernt Umlaute und Sonderzeichen im Verlinkungsziel
+				}%	
+				%	ansonsten beide Parameter verwenden
+				{%
+					\ind{#1}%				in den Index (mit sofortiger Ausgabe)
+					\index{#2}%				nur der zweite Parameter wird lediglich in den Index gepackt
+					\nomenclature{\hypertarget{\detokenize{#2}}{#2} (#1)}{#3}%	Begriff (inkl. Abkürzung) und Erklärung ins Glossar --> \detokenize{#2} entfernt Umlaute und Sonderzeichen im Verlinkungsziel
+				}%
+			}%
+	}%
+	%	Ausgabe des Begriffs am Seitenrand
+	\marginpar{%
+		%\ifthenelse{\isodd{\value{page}}}{}{\hspace{\evensidemargin}}%		macht vertikalen Abstand, ungefähr eine Leerzeile --> damit verschiebt sich der Text am Seitenrand um eine Zeile tiefer als das eigentliche Wort (vermutlich wegen der links-/rechts-wechselnden Seiten bei geraden und ungeraden Seitenzahlen)
+		\parbox[t]{1.5\oddsidemargin}{%
+			\hspace{0pt}\em%
+			%	wenn Seitenzahl ungerade, dann linksbündig, ansonsten rechtsbündig
+			%\ifthenelse{\isodd{\value{page}}}{\raggedright{#2}}{\raggedleft{#2}}%
+			\raggedright{\hyperlink{\detokenize{#2}}{#2}}%	mit Verlinkung auf den Eintrag im Glossar (\detokenize des Linkziels, da auch bei den \nomenclature-Commands gemacht)
+		}%
+	}%
+}
+%	Verwendung
+%	\glossar{}{Wort im Text und am Rand}{Erklärung des Wortes im Glossar}
+%	\glossar{Abk.}{Abkürzung}{Erläuterung des Begriffs "Abkürzung"}

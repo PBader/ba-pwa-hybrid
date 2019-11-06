@@ -1,0 +1,126 @@
+%---------------------------------------------------------------------------------------------------
+% Quelltexte von extern einladen
+%---------------------------------------------------------------------------------------------------
+
+%	Ausgabe von Quelltexten
+\usepackage{listings}
+
+%	Label vor den Listingeinträgen
+\renewcommand{\lstlistingname}{Quellcode}
+%\makeatletter
+%	\renewcommand\lstlistoflistings{\bgroup%
+%		\let\contentsname\lstlistlistingname%
+%		\let\lst@temp\@starttoc \def\@starttoc##1{\lst@temp{lol}}%
+%		\loltableofcontents \egroup%
+%	}
+%\makeatother
+%	Zeile im listoflistings --> Präfix "Code" hinzufügen und Einrückung von links sowie Abstand von Nummerierung und Caption setzen
+\makeatletter
+	\renewcommand\l@lstlisting[2]{\@dottedtocline{1}{0.1em}{2.1em}{Code~#1}{#2}}
+\makeatother
+
+%	für die List of Listings (lol) vertikale Abstände zwischen den einzelnen Listings verschiedener Kapitel hinzufügen, damit es so aussieht wie in der lof und lot
+%	siehe: http://stackoverflow.com/questions/3029271/latex-make-listoffigures-look-like-listoftables-or-lstlistoflistings
+\makeatletter
+\let\my@chapter\@chapter
+\renewcommand*{\@chapter}{%
+  \addtocontents{lol}{\protect\addvspace{10\p@}}%
+  \my@chapter}
+\makeatother
+
+
+%	Farben der Listings
+\definecolor{farbeBackground}{rgb}{0.95, 0.95, 0.95}
+\definecolor{farbeBasic}{rgb}{0.2, 0.2, 0.2}
+\definecolor{farbeKeyword}{rgb}{0.6, 0.0, 0.2}
+\definecolor{farbeNdKeyword}{rgb}{0.5, 0.2, 0.8}
+\definecolor{farbeIdentifier}{rgb}{0.0, 0.0, 0.6}
+\definecolor{farbeString}{rgb}{0.8, 0.5, 0.0}
+\definecolor{farbeComment}{rgb}{0.3, 0.5, 0.3}
+
+%	Default-Settings
+\lstset{
+	language=PHP,				%	Programmiersprache
+	numbers=left,				%	Zeilennummern
+	numberstyle=\tiny,
+	numbersep=5mm,
+	xleftmargin=8mm,
+	framexleftmargin=1mm,
+	framexrightmargin=-2mm,
+	captionpos=b,
+	%frame=tltrBRbl,				%	Rahmen um das Listing
+	%frameround=ffff,
+	tabsize=4,					%	selbsterklärend ;)
+	showstringspaces=false,		%	Leerzeichen in Strings
+	basicstyle=\fontsize{8pt}{9.5pt}\selectfont\color{farbeBasic},			%	Style des Codes
+	backgroundcolor=\color{farbeBackground},
+	keywordstyle=\color{farbeKeyword}\bfseries,
+	ndkeywordstyle=\color{farbeNdKeyword}\bfseries,
+	identifierstyle=\color{farbeIdentifier}\bfseries,
+	stringstyle=\color{farbeString},
+	commentstyle=\color{farbeComment},
+	literate=					%	Umlaute und Sonderzeichen
+		{Ä}{{\"A}}1
+		{Ö}{{\"O}}1
+		{Ü}{{\"U}}1
+		{ä}{{\"a}}1
+		{ö}{{\"o}}1
+		{ü}{{\"u}}1
+		{ß}{{\ss}}1
+		{~}{{\textasciitilde}}1,
+	breaklines=true,
+	breakatwhitespace=true
+}
+
+%	Sprachen, die nicht im Standard-Setup enthalten sind
+\lstdefinelanguage{none}{
+}
+\lstdefinelanguage{CSS}{
+	morekeywords={color,background,margin,padding,font,weight,display,position,top,left,right,bottom,list,style,border,size,white,space,min,width},
+	sensitive=false,
+	morecomment=[l]{//},
+	morecomment=[s]{/*}{*/},
+	morestring=[b]",
+}
+\lstdefinelanguage{Javascript}{
+	keywords={typeof, new, true, false, catch, function, return, null, catch, switch, var, if, in, while, do, else, case, break},
+	ndkeywords={class, export, boolean, throw, implements, import, this},
+	ndkeywordstyle=\color{farbeNdKeyword}\bfseries,
+	sensitive=false,
+	comment=[l]{//},
+	morecomment=[s]{/*}{*/},
+	morestring=[b]',
+	morestring=[b]"
+}
+\lstdefinelanguage{Pseudocode}{
+	morekeywords={class,extends,method,end,return,var,if,then,else,while,do,for,foreach,true,false,null},
+	sensitive=false,
+	morecomment=[l]{//},
+	morecomment=[s]{/*}{*/},
+	morestring=[b]',
+	morestring=[b]",
+}
+\lstdefinelanguage{XML}{
+	basicstyle=\ttfamily\fontsize{8pt}{9.5pt}\selectfont,
+	morestring=[b]",
+	morestring=[s]{<![CDATA[}{]]>},
+%	morestring=[s]{stud}{ieren},
+%	morestring=[s]{nic}{ht},
+	morecomment=[s]{<?}{?>},
+	morecomment=[s]{<!--}{-->},
+	morekeywords={xmlns, version, type, amount, percent, paramname, value, }% list your attributes here,
+}
+\lstdefinelanguage{TikZ}{
+	basicstyle=\ttfamily\fontsize{8pt}{9.5pt}\selectfont,
+	morestring=[s]{"`}{"'},
+	morekeywords={begin, end, tikzpicture, node, child}
+}
+\lstdefinelanguage{PHP}{
+	sensitive=false,
+	morecomment=[l]{//},
+	morecomment=[s]{/*}{*/},
+	morestring=[b]',
+	morestring=[b]",
+	keywords={class, throw, extends, implements, public, protected, private, const, function, return, instanceof, new, throw, catch, switch, case, if, else, for, foreach, while, do, continue, break},
+	ndkeywords={boolean, bool, int, array, self, parent, this, null, true, false},
+}
